@@ -1,26 +1,28 @@
-//your JS code here. If required.
-let buttons = document.querySelector('#buttons')
-let currentAudio = null
+const buttonsSection = document.getElementById("buttons");
 
-buttons.forEach((button)=>{
-	button.addEventListener('click',handlePlay)
-})
+let currentAudio = null;
 
-function handlePlay(e){
-	if (e.target.classList.contains('stop')) {
-    if (currentAudio) {
-      currentAudio.pause()
-      currentAudio.currentTime = 0
+buttonsSection.addEventListener("click", function (e) {
+
+    if (!e.target.classList.contains("btn")) return;
+
+    // STOP BUTTON
+    if (e.target.classList.contains("stop")) {
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        return;
     }
-    return
-  }
 
-  const sound = e.target.dataset.sound
+    const soundName = e.target.dataset.sound;
 
-  if (currentAudio) {
-    currentAudio.pause()
-  }
+    // Stop previous sound
+    if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+    }
 
-  currentAudio = new Audio(sound)
-  currentAudio.play()
-}
+    currentAudio = new Audio(`sounds/${soundName}.mp3`);
+    currentAudio.play();
+});
