@@ -1,1 +1,13 @@
 /*  your css code here. If applicable */
+body{
+	width: 100vw;
+	height: 100vh;
+}
+.container{
+	width:80%;
+	height: 40%;
+	background-color: purple;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
